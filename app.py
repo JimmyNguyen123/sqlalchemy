@@ -119,6 +119,7 @@ def from_date(start):
     results=session.query(func.min(mea.tobs),
                          func.max(mea.tobs),
                          func.avg(mea.tobs)).filter(mea.date >= str(start))
+    session.close()
     stat_list=[]
     for s in results:
         stat_dic={}
@@ -134,6 +135,7 @@ def from_to_date(start,end):
     results=session.query(func.min(mea.tobs),
                          func.max(mea.tobs),
                          func.avg(mea.tobs)).filter(mea.date >= str(start),mea.date < str(end))
+    session.close()
     stat_list=[]
     for s in results:
         stat_dic={}
